@@ -1,10 +1,11 @@
 import './App.css'
+import MovieCard from './components/MovieCard'
 
 function App() {
 
   return (
     <>
-      <h1>Hello Jose</h1>
+      <MovieCard/>
     </>
   )
 }

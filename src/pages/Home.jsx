@@ -11,8 +11,10 @@ const Home = () => {
         {id: 3, title: "Red one", realise_date: "2022"}
     ]
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault()
         alert(searchQuery)
+        setSearchQuery("Search again...")
     }
 
     return (
@@ -28,7 +30,12 @@ const Home = () => {
                 className="search-button">Search</button>
             </form>
             <div className="movies-grid">
-                {movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
+                {movies.map(
+                    (movie) => 
+                     movie.title.toLowerCase().startsWith(searchQuery) && (
+                        <MovieCard movie={movie} key={movie.id}/>
+                     )  
+                    )}
             </div>
         </div>
     )

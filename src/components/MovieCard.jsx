@@ -1,16 +1,11 @@
 
 
-const MovieCard = () => {
+const MovieCard = ({movie}) => {
 
     function onFavoriteClick () {
         alert("Clicked")
     }
 
-    const movie = [
-        {id: 1, title: "Venom", realise_date: "2023"},
-        {id: 2, title: "Moana", realise_date: "2024"},
-        {id: 3, title: "Red one", realise_date: "2022"}
-    ]
 
     return (
         <div className="movie-card">

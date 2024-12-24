@@ -1,11 +1,11 @@
 
-const Favorite = () => {
+const Favorites = () => {
     return (
         <div className="favorites-empty">
             <h2>No favorites movies yet</h2>
-            <p>Star adding your favorite movies</p>
+            <p>Start adding your favorite movies</p>
         </div>
     )
 }
 
-export default Favorite
+export default Favorites

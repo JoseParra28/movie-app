@@ -47,7 +47,9 @@ const Home = () => {
                 <button type="Submit" 
                 className="search-button">Search</button>
             </form>
-            <div className="movies-grid">
+
+        {error && <div className="error-message">{}error</div>}
+        {loading ? <div className="loading">Loading...</div> : <div className="movies-grid">
                 {movies.map(
                     (movie) => 
                     (
@@ -55,6 +57,7 @@ const Home = () => {
                      )  
                     )}
             </div>
+            } 
         </div>
     )
 }

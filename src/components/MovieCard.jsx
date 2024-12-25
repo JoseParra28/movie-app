@@ -1,9 +1,15 @@
 import "../css/MovieCard.css"
+import { useMovieContext } from "../contexts/MovieContext"
+import { Form } from "react-router-dom"
 
 const MovieCard = ({movie}) => {
+    const {isFavorites, addToFavorites, removeFromFavorites } = useMovieContext()
+    const favorite = isFavorites(movie.id)
 
-    function onFavoriteClick () {
-        alert("Clicked")
+    function onFavoriteClick (e) {
+        e.preventDefault()
+        if(favorite) removeFromFavorites(movie.id)
+            else addToFavorites(movie)
     }
 
 
@@ -12,7 +18,7 @@ const MovieCard = ({movie}) => {
         <div className="movie-poster">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
             <div className="movie-overlay">
-                <button onClick={onFavoriteClick} className="favorite-btn">❤️</button>
+                <button onClick={onFavoriteClick} className={`favorite-btn ${favorite ? "active" : "" }`} >❤️</button>
             </div>
         </div>
         <div className="movie-info">

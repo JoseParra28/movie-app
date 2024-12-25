@@ -29,10 +29,21 @@ const Home = () => {
     }, [])
     
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault()
-        alert(searchQuery)
-        setSearchQuery("Search again...")
+        if(!searchQuery.trim()) return
+        if (loading) return
+        setLoading(true) 
+        try {
+            const searchResults = await searchrMovies(searchQuery)
+            setMovies(searchResults)
+            setError(null)
+        } catch (err) {
+            console.lod(err)
+            setError("Failed to search movies...")
+        } finally{
+            setLoading(false)
+        }
     }
 
     return (
